@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>晚餐吃啥</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css">
+    <script type="text/javascript" src="https://unpkg.com/vue@next"></script>
+    <script type="text/javascript" src="https://unpkg.com/view-ui-plus"></script>
+</head>
+<body>
+<div id="app">
+    <i-button @click="show">点我!</i-button>
+    <Modal v-model="visible" title="Welcome">还在开发中</Modal>
+</div>
+<script>
+    const app = Vue.createApp({
+        data () {
+            return {
+                visible: false
+            }
+        },
+        methods: {
+            show () {
+                this.visible = true;
+            }
+        }    
+    });
+    app.use(ViewUIPlus);
+    app.mount("#app");
+  </script>
+</body>
+</html>

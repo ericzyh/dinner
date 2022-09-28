@@ -25,8 +25,20 @@ COMMENT='晚餐店铺'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
+CREATE TABLE `dinner_vote` (
+	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`date` INT(11) NOT NULL DEFAULT '0' COMMENT '日期',
+	`shop_id` INT(11) NOT NULL DEFAULT '0' COMMENT '店铺id',
+	`create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+	`update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COMMENT='某天投票选项'
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
 
-REATE TABLE `dinner_vote` (
+CREATE TABLE `dinner_vote_log` (
 	`id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`user_id` INT(11) NOT NULL DEFAULT '0' COMMENT '用户id',
 	`shop_id` INT(11) NOT NULL DEFAULT '0' COMMENT '店铺id',
@@ -34,7 +46,7 @@ REATE TABLE `dinner_vote` (
 	`update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
 	PRIMARY KEY (`id`) USING BTREE
 )
-COMMENT='晚餐投票'
+COMMENT='晚餐投票日志'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
 ;
