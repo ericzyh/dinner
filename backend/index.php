@@ -5,7 +5,8 @@
 	// composer 加载
 	include (__DIR__."/vendor/autoload.php");
 	// 数据库配置加载
-	$dbconfig = include(__DIR__."/db.config.php");
+	$dbconfig = include(__DIR__."/config/db.config.php");
+	$appconfig = include(__DIR__."/config/app.config.php");
 	// 获取数据库连接
 	use Medoo\Medoo;
 	use util\LogService;

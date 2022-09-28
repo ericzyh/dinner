@@ -10,7 +10,7 @@ use GuzzleHttp;
 class WechatService 
 {
 
-    public static function send($token, $msg) {
+    public static function send($token, $msg, $at = []) {
         try {
             $client = new GuzzleHttp\Client([
                 'headers' => [ 'Content-Type' => 'application/json' ],
@@ -20,7 +20,8 @@ class WechatService
                 'body' => json_encode([
                     "msgtype"=>"text",
                     "text" => [
-                        "content"=>$msg
+                        "content"=>$msg,
+			"mentioned_list"=>$at,
                     ]
                 ])
             ]);
