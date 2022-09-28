@@ -1,2 +1,3 @@
 backend/vendor
-backend/db.config.php
+backend/config/db.config.php
+backend/config/app.config.php
