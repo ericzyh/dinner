@@ -1,5 +1,11 @@
 {
     "require": {
-        "catfan/medoo": "^1.7"
+        "catfan/medoo": "^1.7",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "util\\": "util/"
+        }
     }
 }

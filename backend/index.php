@@ -8,6 +8,8 @@
 	$dbconfig = include(__DIR__."/db.config.php");
 	// 获取数据库连接
 	use Medoo\Medoo;
+	use util\LogService;
+	use util\WechatService;
 	$database = new Medoo([
 	    // 必须配置项
 	    'database_type' => 'mysql',
@@ -24,6 +26,7 @@
 	} else {
 		$route = $_GET['route'];
 	}
+WechatService::send("233befaa-d969-44da-b98a-163aaa2ffe9d", "测试");
 
 	// 统一返回方法
 	function ajaxResponse($code = '200', $data = [], $msg = '') {
@@ -33,6 +36,7 @@
 			'msg' => $msg
 		]);
 	}
+
 
 	// 根据ip获取用户
 	// 找不到用户提示联系系统管理员
