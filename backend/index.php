@@ -26,7 +26,6 @@
 	} else {
 		$route = $_GET['route'];
 	}
-WechatService::send("233befaa-d969-44da-b98a-163aaa2ffe9d", "测试");
 
 	// 统一返回方法
 	function ajaxResponse($code = '200', $data = [], $msg = '') {
