@@ -49,7 +49,7 @@ if (empty($userInfo)) {
 	AjaxResponse('403', [], "IP对应不到用户,请联系管理员");
 }
 
-$votes = $database->query("select a.id, a.name from dinner_vote b, dinner_shop a where a.status = 1 and a.id = b.shop_id and b.date = ".date('Ymd'))->fetchAll();
+$votes = $database->query("select a.id, a.name, a.name_en from dinner_vote b, dinner_shop a where a.status = 1 and a.id = b.shop_id and b.date = ".date('Ymd'))->fetchAll();
 if (empty($votes)) {
 	AjaxResponse('500', [], "今日投票还没生成, 请5点之后再来");
 }
@@ -65,6 +65,7 @@ if ($route == 'index') {
 		$vo = [
 			'id' => $v['id'],
 			'name' => $v['name'],
+			'name_en' => $v['name_en'],
 		];
 		if (date('H:i') > $appconfig['end_vote']) {
 			$vo['num'] = count($shopVote);

@@ -19,7 +19,7 @@
     <i-row>
         <i-col span="24">
             <radio-group v-model="shop_id" vertical>
-                <radio :label="item.id" v-for="item, i in votes" :disabled="myvote>0">{{item.name}}<span v-if="item.num>0">{{item.username}}</span></radio>
+                <radio :label="item.id" v-for="item, i in votes" :disabled="myvote>0">{{item.name_en}}<span v-if="item.num>0">{{item.username}}</span></radio>
             </radio-group>
         </i-col>
     </i-row>
