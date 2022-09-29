@@ -64,6 +64,10 @@ if (date('H:i') == $appconfig['end_vote']) {
 	if (empty($data)) {
 		WechatService::send($appconfig['robot'], "投票结果公布: 没人投票", ["@all"]);
 	} else {
-		WechatService::send($appconfig['robot'], "投票结果公布:\n ".$data[0]['name_en']." 获得".$data[0]['cnt']."票, GOGOGO! \n 详情请查看 ".$appconfig['url'], ["@all"]);
+		$winer = 0;
+		if ($data[0]['cnt'] == $data[1]['cnt']) {
+			$winer = rand(0, 1);
+		}
+		WechatService::send($appconfig['robot'], "投票结果公布:\n ".$data[$winer]['name_en']." 获得".$data[$winer]['cnt']."票, GOGOGO! \n 详情请查看 ".$appconfig['url'], ["@all"]);
 	}
 }
