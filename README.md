@@ -29,12 +29,23 @@ todo
 #### 选项后台
 选项池初始化10个选项
 每个用户每天都可以添加一个临时选项，会员可以添加两个
-#### 五.项目分工及排期
-|功能|人员|排期|
-|----|----|----|
-|用户管理||
-|投票脚本||
-|提醒投票||
-|投票结果||
-|投票页面||
-|选项后台||
+#### 五.安装步骤
+
+    $ git clone https://github.com/ericzyh/dinner
+
+建表
+    $ mysql -u xxx -h xxx
+    $ source dinner/table.sql
+
+nginx 
+    $ cp dinner/nginx.conf ~/nginx/site-enabled/dinner.xxx.com
+    $ nginx -s reload
+
+修改数据库配置
+    $ cp dinner/backend/config/db.config.php_example dinner/backend/config/db.config.php
+    $ vim dinner/backend/config/db.config.php
+
+修改应用配置(播报机器人\生成投票时间\播报时间等)
+    $ cp dinner/backend/config/app.config.php_example dinner/backend/config/app.config.php
+    $ vim dinner/backend/config/app.config.php
+
