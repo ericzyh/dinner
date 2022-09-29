@@ -54,7 +54,7 @@ if (in_array(date('H:i'), $appconfig['notice_vote'])) {
 			$noticeUser[] = $item['email'];
 		}
 		if ($noticeUser) {
-			WechatService::send($appconfig['robot'], '投票即将结束, 请抓紧参加今天的投票', $noticeUser);
+			WechatService::send($appconfig['robot'], '投票即将结束, 请抓紧参加今天的投票 '.$appconfig['url'], $noticeUser);
 		}
 	}
 }
