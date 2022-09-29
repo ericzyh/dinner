@@ -34,18 +34,22 @@ todo
     $ git clone https://github.com/ericzyh/dinner
 
 建表
+
     $ mysql -u xxx -h xxx
     $ source dinner/table.sql
 
 nginx 
+
     $ cp dinner/nginx.conf ~/nginx/site-enabled/dinner.xxx.com
     $ nginx -s reload
 
 修改数据库配置
+
     $ cp dinner/backend/config/db.config.php_example dinner/backend/config/db.config.php
     $ vim dinner/backend/config/db.config.php
 
 修改应用配置(播报机器人\生成投票时间\播报时间等)
+
     $ cp dinner/backend/config/app.config.php_example dinner/backend/config/app.config.php
     $ vim dinner/backend/config/app.config.php
 
