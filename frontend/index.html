@@ -3,30 +3,72 @@
 <head>
     <meta charset="utf-8">
     <title>晚餐吃啥</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/view-ui-plus/dist/styles/viewuiplus.css">
-    <script type="text/javascript" src="https://unpkg.com/vue@next"></script>
-    <script type="text/javascript" src="https://unpkg.com/view-ui-plus"></script>
+    <link href="/res/vue/iview.css" rel="stylesheet">
+    <script src="/res/vue/vue.min.js"></script>
+    <script src="/res/vue/iview.min.js"></script>
+    <script src="/res/vue/axios.min.js"></script>
+    <script src="/res/vue/qs.min.js"></script>
 </head>
 <body>
-<div id="app">
-    <i-button @click="show">点我!</i-button>
-    <Modal v-model="visible" title="Welcome">还在开发中</Modal>
+<div id="app" style="padding: 30px; line-height: 50px;">
+    <i-row>
+        <i-col span="24">
+            <h3>今天吃啥[投票]</h3>
+        </i-col>
+    </i-row>
+    <i-row>
+        <i-col span="24">
+            <radio-group v-model="shop_id" vertical>
+                <radio :label="item.id" v-for="item, i in votes" :disabled="myvote>0">{{item.name}}<span v-if="item.num>0">{{item.username}}</span></radio>
+            </radio-group>
+        </i-col>
+    </i-row>
+    <i-row>
+        <i-button type="primary" @click="vote()" :disabled="myvote>0">
+            投票
+        </i-button>
+    </i-row>
 </div>
 <script>
-    const app = Vue.createApp({
-        data () {
-            return {
-                visible: false
-            }
+ new Vue({
+    el: '#app',
+    data () {
+        return {
+            shop_id: 0,
+            myvote: 0,
+            votes: [],
+        }
+    },
+    created() {
+        this.getData()
+    },
+    mounted() {
+        
+    },
+    methods: {
+        getData() {
+            axios.post('/api/index', {})
+            .then((response) => {
+                if (response.data.code != 200) {
+                    this.$Message.info(response.data.msg);
+                } else {
+                    this.myvote = (response.data.data.myvote)
+                    this.shop_id = (response.data.data.myvote)
+                    this.votes = (response.data.data.votes)
+                }
+            })
         },
-        methods: {
-            show () {
-                this.visible = true;
-            }
-        }    
-    });
-    app.use(ViewUIPlus);
-    app.mount("#app");
-  </script>
+        vote() {
+            axios.post('/api/index?route=toupiao', Qs.stringify({"shop_id":this.shop_id}))
+            .then((response) => {
+                if (response.data.code != 200) {
+                    this.$Message.info(response.data.msg);
+                }
+                this.getData()
+            })
+        },
+    }
+})
+</script>
 </body>
 </html>

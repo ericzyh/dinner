@@ -3,6 +3,6 @@
 		'robot' => '',
 		'url' => 'http://localhost',
 		'begin_vote' => '17:00',
-		'notice_vote' => '17:30',
+		'notice_vote' => ['17:30'],
 		'end_vote' => '17:59',
 	];
