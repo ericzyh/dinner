@@ -67,7 +67,7 @@ if ($route == 'index') {
 			'name' => $v['name'],
 			'name_en' => $v['name_en'],
 		];
-		if (date('H:i') > $appconfig['end_vote']) {
+		if (date('H:i') >= $appconfig['end_vote']) {
 			$vo['num'] = count($shopVote);
 			$vo['username'] = "(".implode(',', array_column($shopVote, 'name')).")";
 		}
