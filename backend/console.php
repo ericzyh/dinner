@@ -69,5 +69,6 @@ if (date('H:i') == $appconfig['end_vote']) {
 			$winer = rand(0, 1);
 		}
 		WechatService::send($appconfig['robot'], "投票结果公布:\n ".$data[$winer]['name_en']." 获得".$data[$winer]['cnt']."票, GOGOGO! \n 详情请查看 ".$appconfig['url'], ["@all"]);
+		$database->query("update dinner_vote set status = 1 where date = ".date('Ymd'). " and shop_id = " .  $data[$winer]['shop_id']);
 	}
 }

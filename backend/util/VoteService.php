@@ -12,7 +12,7 @@ class VoteService
 			return true;
 		}
 		// 如果没有生成就生成
-		$votes = $medoo->query("SELECT a.* FROM dinner_shop a LEFT join dinner_vote_log b on a.id = b.shop_id AND a.status = 1 AND b.create_time > '".date('Y-m-d', strtotime("this week"))."' WHERE b.id IS NULL order BY RAND() LIMIT 3")->fetchAll();
+		$votes = $medoo->query("SELECT a.* FROM dinner_shop a LEFT join dinner_vote b on a.id = b.shop_id and b.status = 1 AND a.status = 1 AND b.create_time > '".date('Y-m-d', strtotime("this week"))."' WHERE b.id IS NULL order BY RAND() LIMIT 3")->fetchAll();
 		foreach ($votes as $vote) {
 			$medoo->insert("dinner_vote", [
 				"shop_id" => $vote['id'],
