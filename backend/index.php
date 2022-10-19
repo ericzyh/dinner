@@ -61,7 +61,7 @@ if ($route == 'index') {
 	$vote = UserService::getVoteByUserIdAndDate($userId, date('Y-m-d'), $database);
 	$returnVote = [];
 	foreach ($votes as $k => $v) {
-		$shopVote  = $database->query("select b.name from dinner_vote_log a, dinner_user b where a.user_id = b.id and a.shop_id = ".$v['id']." and a.create_time > ".date('Y-m-d'))->fetchAll();
+		$shopVote  = $database->query("select b.name from dinner_vote_log a, dinner_user b where a.user_id = b.id and a.shop_id = ".$v['id']." and a.create_time > '".date('Y-m-d')."'")->fetchAll();
 		$vo = [
 			'id' => $v['id'],
 			'name' => $v['name'],
